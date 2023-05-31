@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   # post 'products', to:'products#create'
 
-  resources :products
+  resources :products do
+    get 'search', on: :collection #products/search -> products#search
+  end
 
   root "main#welcome"
 end

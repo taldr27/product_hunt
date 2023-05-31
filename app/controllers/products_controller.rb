@@ -38,6 +38,11 @@ class ProductsController < ApplicationController
     redirect_to products_path, status: :see_other, notice: "Product have been deleted."
   end
 
+  def search
+    @q = params[:q]
+    @products = Product.where("name LIKE ?", "%#{@q}%").where(visible: true)
+  end
+
   private
 
   def set_product
