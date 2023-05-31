@@ -54,6 +54,7 @@ group :development, :test do
 end
 
 gem 'friendly_id', "~> 5.4.0"
+gem 'will_paginate', "~> 3.3"
 gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
 
 
