@@ -53,11 +53,14 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
+gem 'friendly_id', "~> 5.4.0"
+gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
-  gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
