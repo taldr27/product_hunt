@@ -24,3 +24,15 @@
     </div>
   </div>
 </section>
+
+<section>
+  <div class="mt-4 mb-4">
+    <%= render partial:'comments/form' %>
+  </div>
+</section>
+
+<section>
+  <div class="mt-4 mb-4">
+    <%= render partial:'comments/comment', collection:@product.comments, as: :comment %>
+  </div>
+</section>
