@@ -26,6 +26,14 @@
   </div>
 
   <div class="mb-4">
+    <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |category| %>
+      <%= category.label class:"form-check-label text-lg inline-block text-gray-600" do %>
+        <%= category.check_box + category.text %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="mb-4">
     <%= form.submit "Save Product", class:"cursor-pointer appearance-none block w-full py-3 px-4 text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none" %>
   </div>
 
