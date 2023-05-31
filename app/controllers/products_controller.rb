@@ -1,6 +1,23 @@
 class ProductsController < ApplicationController
+
+  before_action :set_product, only: [:show, :edit, :update]
+
   def index
     @products = Product.where(visible: true).order('id DESC')
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product), notice: "Product has been updated successfully"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def new
@@ -10,13 +27,17 @@ class ProductsController < ApplicationController
   def create
     @product = Product.create(product_params)
     if @product.persisted?
-      redirect_to products_path, notice:"Product have been saved."
+      redirect_to product_path(@product), notice:"Product have been saved."
     else
       render :new, status: :unprocessable_entity 
     end
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.required(:product).permit(:name, :description, :visible)
