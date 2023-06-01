@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :products do
     get 'search', on: :collection #products/search -> products#search
     resources :comments, only: [:create]
+    resources :votes, only: [:create]
   end
 
   root "main#welcome"

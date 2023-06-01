@@ -25,6 +25,8 @@ class Product < ApplicationRecord
   has_many :product_categories
   has_many :categories, through: :product_categories # join
 
+  has_many :votes, as: :votable
+
   has_many :comments, -> { order('id DESC') }
 
   accepts_nested_attributes_for :categories

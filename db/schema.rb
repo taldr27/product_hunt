@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_220410) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_225416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_220410) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type", null: false
+    t.bigint "votable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
