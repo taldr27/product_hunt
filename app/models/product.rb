@@ -31,9 +31,18 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :categories
 
+  scope :visible, -> { where(visible:true) }
+
   def category_default
     return self.categories.first.name if self.categories.any?
     'No category'
+  end
+
+  def self.populars
+    joins("LEFT JOIN votes ON votes.votable_id = products.id AND votes.votable_type = 'Product'")
+    .select("products.*, count(votes.id) as total")
+    .group("products.id")
+    .order('total DESC')
   end
 
 end
