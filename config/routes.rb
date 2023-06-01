@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :products do
     get 'search', on: :collection #products/search -> products#search
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      resources :votes, only: [:create]
+    end
+    
     resources :votes, only: [:create]
   end
 
